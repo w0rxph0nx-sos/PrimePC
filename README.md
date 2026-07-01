@@ -1,35 +1,28 @@
-## Analysis & Design
-
-### Frontend
-- พัฒนาเว็บไซต์ด้วย HTML, CSS และ JavaScript
-- แสดงข้อมูลสินค้า รายละเอียดสินค้า และหน้าหลักของระบบ
-- ออกแบบให้ใช้งานง่าย (Responsive Design)
-
-### Backend
-- จัดการตรรกะการทำงานของระบบ
-- รองรับการเชื่อมต่อ API และการจัดการคำสั่งซื้อ
-- สามารถพัฒนาด้วย Node.js และ Express
-
-### Database
-- จัดเก็บข้อมูลสมาชิก
-- จัดเก็บข้อมูลสินค้า
-- จัดเก็บข้อมูลคำสั่งซื้อ
-
----
-
 ## System Architecture
 
+PrimePC ใช้สถาปัตยกรรมแบบ **3-Tier Architecture** โดยแบ่งระบบออกเป็น 3 ส่วนหลัก ได้แก่ Frontend, Backend และ Database เพื่อให้ระบบมีโครงสร้างที่ชัดเจน สามารถพัฒนา ดูแลรักษา และขยายระบบในอนาคตได้ง่าย
+
 ```mermaid
-flowchart LR
+flowchart TB
 
-A[Customer]
-B[Frontend<br>HTML CSS JavaScript]
-C[Backend<br>Node.js / Express]
-D[(Database)]
+subgraph Client
+    A[Customer]
+end
 
-E[Products]
-F[Orders]
-G[Users]
+subgraph Frontend
+    B[Web Browser<br/>HTML CSS JavaScript]
+end
+
+subgraph Backend
+    C[Web Server<br/>Node.js / Express]
+    D[REST API]
+end
+
+subgraph Database
+    E[(Users)]
+    F[(Products)]
+    G[(Orders)]
+end
 
 A --> B
 B --> C
