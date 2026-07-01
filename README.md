@@ -1,27 +1,41 @@
-# PrimePC Project Documentation
+## Analysis & Design
 
-PrimePC คือโครงงานเว็บไซต์เอกสารสำหรับระบบร้านค้าออนไลน์จำหน่ายอุปกรณ์คอมพิวเตอร์ เช่น CPU, GPU, RAM, Mainboard และ SSD
+### Frontend
+- พัฒนาเว็บไซต์ด้วย HTML, CSS และ JavaScript
+- แสดงข้อมูลสินค้า รายละเอียดสินค้า และหน้าหลักของระบบ
+- ออกแบบให้ใช้งานง่าย (Responsive Design)
 
-## Project Information
+### Backend
+- จัดการตรรกะการทำงานของระบบ
+- รองรับการเชื่อมต่อ API และการจัดการคำสั่งซื้อ
+- สามารถพัฒนาด้วย Node.js และ Express
 
-- Project Name: PrimePC
-- Project Type: E-Commerce Web Platform
-- Subject: CSI204 Digital Platform for Software Development
-- Tools: HTML, CSS, JavaScript, GitHub, SourceTree, GitHub Pages
+### Database
+- จัดเก็บข้อมูลสมาชิก
+- จัดเก็บข้อมูลสินค้า
+- จัดเก็บข้อมูลคำสั่งซื้อ
 
-## System Scope
+---
 
-- แสดงข้อมูลโครงงาน
-- แสดงวัตถุประสงค์ของระบบ
-- แสดงขอบเขตของระบบ
-- อธิบายแนวทางการพัฒนาตาม SDLC
-- แสดงเครื่องมือและเทคโนโลยีที่ใช้
-- แสดงแผนการดำเนินงาน
+## System Architecture
 
-## GitHub Pages
+```mermaid
+flowchart LR
 
-Link: ใส่ลิงก์เว็บตรงนี้หลัง Deploy
+A[Customer]
+B[Frontend<br>HTML CSS JavaScript]
+C[Backend<br>Node.js / Express]
+D[(Database)]
 
-## Repository
+E[Products]
+F[Orders]
+G[Users]
 
-Link: ใส่ลิงก์ GitHub Repository ตรงนี้
+A --> B
+B --> C
+C --> D
+
+D --> E
+D --> F
+D --> G
+```
