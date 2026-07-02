@@ -99,3 +99,16 @@ b {
     font-size: 14px;
   }
 }
+
+.diagram-box {
+  background: #fffbea;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-top: 15px;
+}
+
+.mermaid {
+  text-align: center;
+}
