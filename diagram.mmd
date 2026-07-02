@@ -1,0 +1,60 @@
+graph TD
+
+    subgraph "User Actors (ผู้ใช้งานระบบ)"
+        C["ลูกค้า (Customer)"]
+        S["พนักงาน (Staff)"]
+        A["ผู้ดูแลระบบ (Administrator)"]
+    end
+
+    subgraph "Frontend Layer (React)"
+        UIPub["หน้าเว็บร้านค้าออนไลน์ (Public UI)"]
+        UIPriv["ระบบจัดการหลังบ้าน (Back-Office UI)"]
+    end
+
+    subgraph "Backend Layer (Node.js API Server)"
+        API["API Gateway / Router"]
+        
+        subgraph "Core Services & Logic"
+            Auth["System Authentication"]
+            Prod["Product Management"]
+            Order["Order & Payment"]
+            UserServ["User & Member"]
+            Ticket["Claim & Ticket"]
+            Mark["Marketing & Promo"]
+            Report["Reporting"]
+            SysLog["System Logs"]
+        end
+    end
+
+    subgraph "Data Layer"
+        DB[("LocalStorage (Browser Database)")]
+    end
+
+    %% --- ด้านการเข้าใช้งานหน้าบ้าน/หลังบ้าน ---
+    C --> UIPub
+    S --> UIPriv
+    A --> UIPriv
+
+    %% --- หน้าจอส่งต่อ Request ไปที่ API ---
+    UIPub -->|HTTP Request| API
+    UIPriv -->|HTTP Request| API
+
+    %% --- API กระจายงานไปยัง Service ย่อยๆ ---
+    API --> Auth
+    API --> Prod
+    API --> Order
+    API --> UserServ
+    API --> Ticket
+    API --> Mark
+    API --> Report
+    API --> SysLog
+
+    %% --- ทุก Service เชื่อมเข้ากับ Database กลาง ---
+    Auth --> DB
+    Prod --> DB
+    Order --> DB
+    UserServ --> DB
+    Ticket --> DB
+    Mark --> DB
+    Report --> DB
+    SysLog --> DB
